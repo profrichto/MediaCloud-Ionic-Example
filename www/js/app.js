@@ -23,15 +23,15 @@ angular.module('mc', ['ionic', 'mc.controllers', 'mc.services', 'mc.config'])
 })
 
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
-  
-  $stateProvider
 
+  $stateProvider
   .state('app', {
     url: '/app',
     abstract: true,
     templateUrl: 'templates/menu.html',
     controller: 'AppCtrl'
   })
+
 
   .state('app.search', {
     cache: false,
@@ -42,7 +42,16 @@ angular.module('mc', ['ionic', 'mc.controllers', 'mc.services', 'mc.config'])
         controller: 'SearchCtrl'
       }
     }
-  });
+  })
+
+  .state('app.about', {
+    url: '/about',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/about.html',
+      }
+    }
+    });
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/search/kittens');
